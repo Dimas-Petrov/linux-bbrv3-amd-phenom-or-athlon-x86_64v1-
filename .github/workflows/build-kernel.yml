@@ -18,7 +18,8 @@ jobs:
             libelf-dev dwarves zstd
 
       - name: Build kernel debs
-        working-directory: ./linux
+        working-directory: ${{ github.workspace }}/linux
+
         run: |
           make -j$(nproc) deb-pkg
 
