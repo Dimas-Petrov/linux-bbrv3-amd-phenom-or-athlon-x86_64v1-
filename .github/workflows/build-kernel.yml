@@ -17,9 +17,8 @@ jobs:
           sudo apt install -y build-essential bc flex bison libncurses-dev libssl-dev \
             libelf-dev dwarves zstd
 
-      - name: Build kernel debs
+            - name: Build kernel debs
         working-directory: ${{ github.workspace }}/linux
-
         run: |
           make -j$(nproc) deb-pkg
 
