@@ -28,6 +28,7 @@ jobs:
       - name: Build kernel debs
         working-directory: ${{ github.workspace }}/linux
         run: |
+          scripts/config --disable IKHEADERS
           make -j$(nproc) bindeb-pkg
 
       - name: Upload artifacts
