@@ -21,8 +21,9 @@ jobs:
       - name: Install build deps
         run: |
           sudo apt update
-          sudo apt install -y build-essential bc flex bison libncurses-dev libssl-dev \
-            libelf-dev dwarves zstd
+          sudo apt install -y \
+            build-essential bc flex bison libncurses-dev libssl-dev \
+            libelf-dev dwarves zstd debhelper libdw-dev
 
       - name: Build kernel debs
         working-directory: ${{ github.workspace }}/linux
