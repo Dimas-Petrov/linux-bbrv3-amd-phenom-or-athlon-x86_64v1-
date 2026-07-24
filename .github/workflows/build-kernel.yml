@@ -1,0 +1,29 @@
+name: Build Linux Kernel BBRv3 x64v1
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install build deps
+        run: |
+          sudo apt update
+          sudo apt install -y build-essential bc flex bison libncurses-dev libssl-dev \
+            libelf-dev dwarves zstd
+
+      - name: Build kernel debs
+        working-directory: ./linux
+        run: |
+          make -j$(nproc) deb-pkg
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: kernel-debs
+          path: ../*.deb
