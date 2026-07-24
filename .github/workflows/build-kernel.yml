@@ -27,7 +27,7 @@ jobs:
       - name: Build kernel debs
         working-directory: ${{ github.workspace }}/linux
         run: |
-          make -j$(nproc) deb-pkg
+          make -j$(nproc) bindeb-pkg
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
